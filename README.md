@@ -7,3 +7,7 @@
  5. after migrating next type `php artisan db:seed`
  6. then type `npm install && npm run build`.
  7. finally type `php artisan serve` to run the program.
+## Pages
+ `http://127.0.0.1:8000/library`
+ `http://127.0.0.1:8000/authors`
+ `http://127.0.0.1:8000/books`

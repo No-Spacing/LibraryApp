@@ -12,6 +12,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('books') }}">Book</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('has-many') }}">Has Many</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('belongs-to') }}">Belongs To</a>
+          </li>
         </ul>
       </div>
     </div>

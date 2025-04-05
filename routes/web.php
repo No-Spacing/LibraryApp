@@ -21,4 +21,6 @@ Route::controller(BookController::class)->group( function () {
 
 Route::controller(LibraryController::class)->group( function () {
     Route::get('library', 'view')->name('library');
+    Route::get('has-many', 'hasMany')->name('has-many');
+    Route::get('belongs-to', 'belongsTo')->name('belongs-to');
 });

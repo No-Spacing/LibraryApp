@@ -22,16 +22,11 @@
             <tr>
                 <th scope="row">{{ $item->title }}</th>
                 <td>{{ $item->published_date }}</td>  
-                <td>{{ $item->authors->name }}</td> 
+                <td>{{ $item->authors->name ?? null }}</td> 
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="modal fade" id="modalBookUpdate">
-        <div class="modal-dialog">
-            @include('layouts.modal_book_update')
-        </div>
-    </div>
     {{ $libraries->links('pagination::bootstrap-5') }}
 </div>
 

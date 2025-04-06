@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="d-flex justify-content-center">
-        <form action="{{ route('post-book') }}" method="POST">
+        <form action="{{ route('books.store') }}" method="POST" style="width: 1000px">
             @csrf
             <div class="mb-3" style="width: 800px">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control form-control-lg" id="title" name="title">
                 @error('title')
                     <p class="text-danger" for="title"> 
                         {{ $message }}
@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3">
                 <label for="author_id" class="form-label">Author ID</label>
-                <input type="text" class="form-control" id="author_id" name="author_id">
+                <input type="text" class="form-control form-control-lg" id="author_id" name="author_id">
                 @error('author_id')
                     <p class="text-danger" for="author_id"> 
                         {{ $message }}
@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label for="published_date" class="form-label">Date Published</label>
-                <input type="date" class="form-control" id="published_date" name="published_date">
+                <input type="date" class="form-control form-control-lg" id="published_date" name="published_date">
                 @error('published_date')
                     <p class="text-danger" for="published_date"> 
                         {{ $message }}
@@ -35,10 +35,10 @@
         </form>
     </div>
     <div class="container mt-3 pt-3">
-        <form id="searchForm" action="{{ route('books') }}" method="GET">
+        <form id="searchForm" action="{{ route('books.index') }}" method="GET">
             <div class="d-flex mb-2" style="width:600px">
                 <input type="text" placeholder="Search..." class="form-control" id="search" name="search">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary mx-2">Search</button>
             </div>
         </form>
         <table class="table">
@@ -63,23 +63,34 @@
                         class="btnUpdateBook btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#modalBookUpdate" 
-                        data-role="update" 
                         data-id="{{ $item->id }}" 
                         data-title="{{ $item->title }}"
                         data-author-id="{{ $item->author_id }}"
                         data-published-date="{{ $item->published_date }}"
                         >Update</button>
-                        <a class="btn btn-danger" href="{{ route('delete-book', [$item->id]) }}">Delete</a>
+
+                        <div class="modal fade" id="modalBookUpdate">
+                            <div class="modal-dialog">
+                                @include('layouts.modal_book_update')
+                            </div>
+                        </div>
+
+                        <button 
+                        class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalBookDestroy{{ $item->id }}"
+                        >Delete</button>
+
+                        <div class="modal fade" id="modalBookDestroy{{ $item->id }}">
+                            <div class="modal-dialog">
+                                @include('layouts.modal_book_destroy')
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        <div class="modal fade" id="modalBookUpdate">
-            <div class="modal-dialog">
-                @include('layouts.modal_book_update')
-            </div>
-        </div>
         {{ $books->links('pagination::bootstrap-5') }}
     </div>
     <script 

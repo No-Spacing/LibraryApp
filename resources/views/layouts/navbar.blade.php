@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('authors') }}">Author</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('authors.index') }}">Author</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('books') }}">Book</a>
+            <a class="nav-link" href="{{ route('books.index') }}">Book</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('has-many') }}">Has Many</a>

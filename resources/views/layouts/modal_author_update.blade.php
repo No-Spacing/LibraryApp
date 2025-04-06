@@ -1,5 +1,6 @@
-<form id="authorUpdate" action="{{ route('update-author') }}" method="POST">
+<form id="authorUpdate" action="{{ route('authors.update', [$item->id]) }}" method="POST">
     @csrf
+    {{ method_field('PUT') }}
     <div class="modal-content">
         <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Edit Author</h5>

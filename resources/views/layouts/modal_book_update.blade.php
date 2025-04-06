@@ -1,5 +1,6 @@
-<form id="bookUpdate" action="{{ route('update-book') }}" method="POST">
+<form id="bookUpdate" action="{{ route('books.update', [$item->id]) }}" method="POST">
     @csrf
+    {{ method_field('PUT') }}
     <div class="modal-content">
         <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Edit Book</h5>

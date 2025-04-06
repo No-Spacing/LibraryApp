@@ -19,7 +19,7 @@ class BookFactory extends Factory
         return [
             'title' => rtrim($this->faker->sentence(2), '.'),
             'author_id' => $this->faker->numberBetween(1, 10),
-            'published_date' => now(),
+            'published_date' => date('Y-m-d', strtotime(now())),
         ];
     }
 }

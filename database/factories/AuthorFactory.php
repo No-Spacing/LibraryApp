@@ -18,7 +18,8 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'birth_date' => now(),
+            'birth_date' => date('Y-m-d', strtotime(now())),
+
         ];
     }
 }

@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Author;
-
 use App\Http\Requests\AuthorRequest;
+use App\Http\Resources\AuthorResource;
+
 
 class AuthorsController extends Controller
 {
@@ -16,15 +17,16 @@ class AuthorsController extends Controller
      */
     public function index(Request $request)
     {
-        $authors = Author::query()
-                    ->when($request->search, function($query, $search){
+        $authors = Author::query()->when($request->search, function($query, $search){
                         $query->where('name', 'like', '%' . $search . '%');
                     });
 
-        return view('authors')
-        ->with([
-            'authors' => $authors->paginate(5)->withQueryString()
-        ]);
+        return AuthorResource::collection($authors->paginate(5));
+
+        // return view('authors')
+        // ->with([
+        //     'authors' => AuthorResource::collection($authors->paginate(5)),
+        // ]);
     }
 
     /**

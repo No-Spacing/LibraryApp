@@ -80,7 +80,7 @@
             </tbody>      
         </table>
         
-        {{ $authors->links('pagination::bootstrap-5') }}
+        {{-- {{ $authors->links('pagination::bootstrap-5') }} --}}
     </div>
 
     <script 
